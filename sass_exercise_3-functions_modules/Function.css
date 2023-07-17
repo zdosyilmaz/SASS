@@ -1,0 +1,82 @@
+@function pxToRem($pixels) {
+    @return $pixels / 16rem;
+}
+
+@import "variables.css";
+@import "functions.css";
+
+/* Reset some default styles */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: var(--default-line-height);
+}
+
+header {
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+article {
+  border: 1px solid var(--article-border-color);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+article h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+article p {
+  font-size: 1rem;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--tag-bg-color);
+  color: var(--tag-text-color);
+  border: 1px solid var(--article-border-color);
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: pxToRem(16); 
+}
+
+.blog-post:nth-child(1) .tags {
+  --color: var(--primary-color);
+  @include articleTags(var(--color), var(--color));
+}
+
+.blog-post:nth-child(2) .tags {
+  --color: var(--secondary-color);
+  @include articleTags(var(--color), var(--color), pxToRem(20)); 
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  font-size: pxToRem(var(--footer-font-size)); 
